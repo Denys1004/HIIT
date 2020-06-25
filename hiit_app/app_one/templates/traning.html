@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiit</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="page_container">
+        <h1>Timer</h1>
+        <div class="timer_container">
+            <h1 id="timerNumber"></h1>
+        </div>
+        <div><p id ="workout_status"></p></div>
+        <div id="exercise_photo_container"></div>
+    </div>
+
+
+
+    <script>
+       let restTime = parseInt("{{request.session.rest_time}}");
+       let workoutTime = parseInt("{{request.session.workout_time}}");
+       let breakTime = parseInt("{{request.session.break_time}}");
+       let training_exercises = '{{ request.session.training_array }}';
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
