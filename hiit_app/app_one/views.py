@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
+import json
 
 def index(request):
     if 'rest_time' not in request.session:
@@ -14,16 +15,19 @@ def index(request):
 
     return render(request, 'index.html')
 
-def exersize(request, exer_num, exersize_name):
-    request.session['exname'] = exersize_name
-    request.session['ex'] = exer_num
-    if len(request.session['training_array']) < 6 and len(request.session['exersize_name']) < 6:
-        request.session['training_array'].append(exer_num)
-        request.session['exersize_name'].append(exersize_name)
-    else:
+def setup_training(request, exer_num, exersize_name):
+    if 'user_id' in request.session:
         pass
-    print(request.session['training_array'])
-    return redirect('/')
+    else:
+        request.session['exname'] = exersize_name
+        request.session['ex'] = exer_num
+        if len(request.session['training_array']) < 6 and len(request.session['exersize_name']) < 6:
+            request.session['training_array'].append(exer_num)
+            request.session['exersize_name'].append(exersize_name)
+            request.session.save()
+            return HttpResponse(json.dumps(request.session['training_array']), content_type='application/json')
+
+        
 
 def starttraning(request):
     request.session['rest_time'] = request.POST['rest_time']
