@@ -16,16 +16,27 @@ h1 {
   text-align: center;
 }
 
-.exersize_container {
+#exersize_container {
   text-align: center;
 }
 
-.image_container {
+.not_choosen {
   display: inline-block;
   text-align: center;
 }
 
-.image_container img {
+.not_choosen img {
+  width: 196px;
+  height: auto;
+}
+
+.choosen {
+  display: inline-block;
+  text-align: center;
+  background-color: green;
+}
+
+.choosen img {
   width: 196px;
   height: auto;
 }

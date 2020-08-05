@@ -13,13 +13,13 @@ h1{
     margin: 10px;
     text-align: center;
 }
-.exersize_container{
+#exersize_container{
     text-align: center;
 }
 
 
 
-.image_container{
+.not_choosen{
     display: inline-block;
     text-align: center;
     img{
@@ -27,6 +27,17 @@ h1{
         height: auto;
     }
 }
+.choosen{
+    display: inline-block;
+    text-align: center;
+    background-color: green;
+    img{
+        width: 196px;
+        height: auto;
+    }
+}
+
+
 
 .image_container a:hover{
     border: 2px solid black;
