@@ -1,12 +1,23 @@
-// making usable array from users input:
-function delete_quotes(ex_string){
-  let newstr = ex_string.replace(/&#39;/g, "")
-  newstr = newstr.replace("[", "")
-  newstr = newstr.replace("]", "")
-  newstr = newstr.split(", ")
-  return newstr
+var restTime
+var workoutTime
+var breakTime
+var training_exercises
+
+window.onload = () =>{
+    
+    getSession();
+    training();
 }
-training_exercises = delete_quotes(training_exercises)
+
+// making usable array from users input:
+// function delete_quotes(ex_string){
+//   let newstr = ex_string.replace(/&#39;/g, "")
+//   newstr = newstr.replace("[", "")
+//   newstr = newstr.replace("]", "")
+//   newstr = newstr.split(", ")
+//   return newstr
+// }
+// training_exercises = delete_quotes(training_exercises)
 // Adding finish image to the training
 // training_exercises.push('finish')
 console.log(training_exercises);
@@ -50,10 +61,22 @@ async function training(){
   await countDown(restTime, "DONE", 'finish')
 }
 
-
-window.onload = () =>{
-  training();
+async function getSession()
+{
+    $.ajax({
+        type: 'GET',
+        url: '/passSession',
+        success: function(response)
+        {
+            console.log(response);
+            restTime=response.restTime
+            workoutTime=response.workoutTime
+            breakTime=response.breakTime
+            training_exercises=response.training_exercises
+        }
+    })
 }
+
     
 
 

@@ -11,60 +11,44 @@
 </head>
 <body>
     <div class="page_container">
-        <h1>Choose 6 exersizes</h1>
-        <div class="exersize_container">
-       
-        <div id='slide_1' class="image_container" onclick="add_exercise('slide_1', 'pushup')">
-            <img src="../static/images/slide_1.gif" alt="pushup">
-            <p>pushup</p>
-        </div>
-     
-
-        <div id='slide_2' class="image_container"  onclick="add_exercise('slide_2', 'standup')">
-            <img src="../static/images/slide_2.gif" alt="standup">
-            <p>standup</p>
-        </div>
-
-
-            <div id='slide_3' class="image_container"  onclick="add_exercise('slide_3', 'sitdown')">
-                <img src="../static/images/slide_3.gif" alt="sitdown">
+        <h1>Choose 6 exercises</h1>
+        <div id="exersize_container">
+            <div id='slide_1' class="not_choosen">
+                <img src="../static/images/slide_1.gif" alt="slide_1">
+                <p>pushup</p>
+            </div>
+            <div id='slide_2' class="not_choosen">
+                <img src="../static/images/slide_2.gif" alt="slide_2">
+                <p>standup</p>
+            </div>
+            <div id='slide_3' class="not_choosen">
+                <img src="../static/images/slide_3.gif" alt="slide_3">
                 <p>sitdown</p>
             </div>
-
-
-            <div id='slide_4' class="image_container" onclick="add_exercise('slide_4', 'pullup')">
-                <img src="../static/images/slide_4.gif" alt="pullup">
+            <div id='slide_4' class="not_choosen">
+                <img src="../static/images/slide_4.gif" alt="slide_4">
                 <p>pullup</p>
             </div>
-
-        
-            <div id='slide_5' class="image_container" onclick="add_exercise('slide_5', 'berpy')">
-                <img src="../static/images/slide_5.gif" alt="berpy">
+            <div id='slide_5' class="not_choosen">
+                <img src="../static/images/slide_5.gif" alt="slide_5">
                 <p>berpy</p>
             </div>
-
-        
-            <div id='slide_6' class="image_container" onclick="add_exercise('slide_6', 'jumps')">
-                <img src="../static/images/slide_6.gif" alt="jumps">
+            <div id='slide_6' class="not_choosen">
+                <img src="../static/images/slide_6.gif" alt="slide_6">
                 <p>jumps</p>
             </div>
-          
-            <form action="/starttraning" method="POST">
-                {% csrf_token %}
-                <br>
-                Rest Time between exersices,  in seconds: <input type="number" id = "restTime" name="rest_time"><br><br>
-                Workout Time for each exersice,  in seconds: <input type="number" id = "workoutTime" name="workout_time"><br><br>
-                Break Time between cycles,  in seconds: <input type="number" id = "breakTime" name="break_time"><br><br>
-                <button>Start training</button>
-            </form>
-            <br>
-            <a href="/reset"><button>Reset</button></a>
-
         </div>
-
+        <form id="select_times" action="/starttraning" method="POST">
+            {% csrf_token %}
+            <p>Rest Time between exercises,  in seconds: <input type="number" id = "restTime" name="rest_time" value='15'></p>
+            <p>Workout Time for each exercise,  in seconds: <input type="number" id = "workoutTime" name="workout_time" value="30"></p>
+            <p>Break Time between cycles,  in seconds: <input type="number" id = "breakTime" name="break_time" value="60"></p>
+            <button>Start training</button>
+        </form>
+        <br>
+        <a href="/reset"><button>Reset</button></a>
         <div class="description_container">
             <div id="training_array">{{ request.session.training_array }}</div>
-            <!-- <br> -->
             <p>Rest Time:<span id = 'rest_time_num'>{{ request.session.rest_time }}</span></p>
             <p>Workout Time:<span id = 'workout_time_num'>{{ request.session.workout_time }}</span></p>
             <p>Break Time:<span id = 'break_time_num'>{{ request.session.break_time }}</span></p>
@@ -76,12 +60,5 @@
             <p >Exercise 6: <span id='ex6' class="choosed_exercise">{{ request.session.exersize_name.5 }}</span></p>
         </div>
     </div>
-    <script>
-        // $('body .page_container .exersize_container a:link').click(function(){
-        //     $('body a:link').removeClass('active');
-        //     $(this).addClass('active');	 
-        // });
-    </script>
-
 </body>
 </html>

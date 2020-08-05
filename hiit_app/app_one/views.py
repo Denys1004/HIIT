@@ -1,46 +1,54 @@
 from django.shortcuts import render, redirect, HttpResponse
-import json
+import json, random
 
+
+#
 def index(request):
-    if 'rest_time' not in request.session:
-        request.session['rest_time'] = 15
-    if 'workout_time' not in request.session:
-        request.session['workout_time'] = 30
-    if 'break_time' not in request.session:
-        request.session['break_time'] = 60
     if 'training_array' not in request.session:
         request.session['training_array'] = []
-    if 'exersize_name' not in request.session:
-        request.session['exersize_name'] = []
 
     return render(request, 'index.html')
 
-def setup_training(request, exer_num, exersize_name):
-    if 'user_id' in request.session:
-        pass
-    else:
-        request.session['exname'] = exersize_name
-        request.session['ex'] = exer_num
-        if len(request.session['training_array']) < 6 and len(request.session['exersize_name']) < 6:
-            request.session['training_array'].append(exer_num)
-            request.session['exersize_name'].append(exersize_name)
-            request.session.save()
-            return HttpResponse(json.dumps(request.session['training_array']), content_type='application/json')
+def add_exercise(request, exercise):
+    if len(request.session['training_array']) < 6:
+        request.session['training_array'].append(exercise)
+        request.session.save()
+        return HttpResponse(json.dumps(request.session['training_array']), content_type='application/json')
 
-        
+def remove_exercise(request, exercise):
+    request.session['training_array'].remove(exercise)
+    request.session.save()
+    return HttpResponse(json.dumps(request.session['training_array']), content_type='application/json')
 
 def starttraning(request):
     request.session['rest_time'] = request.POST['rest_time']
     request.session['workout_time'] = request.POST['workout_time']
     request.session['break_time'] = request.POST['break_time']
-    print(request.session['rest_time'])
-    print(request.session['workout_time'] )
-    print(request.session['break_time'])
-    # return redirect('/')
+    
+    tempList=['slide_1','slide_2','slide_3','slide_4','slide_5','slide_6']
+    random.shuffle(tempList)
+    
+    i=0
+    while(len(request.session['training_array']) !=6):
+        if(tempList[i] not in request.session['training_array']):
+            request.session['training_array'].append(tempList[i])
+        i+=1
+
     return redirect('/traning')
 
 def traning(request):
+   
     return render(request, 'traning.html')
+
+def passSession(request):
+    context={
+        'training_exercises':request.session['training_array'],
+        'restTime':request.session['rest_time'],
+        'workoutTime':request.session['workout_time'],
+        'breakTime':request.session['break_time'],    
+    }
+    return HttpResponse(json.dumps(context), content_type='application/json')
+
 
 def reset(request):
     request.session.clear()
