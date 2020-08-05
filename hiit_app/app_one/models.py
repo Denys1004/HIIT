@@ -24,11 +24,11 @@ class UserManager(models.Manager):
         errors = {}																										
         # NAME VALIDATION 	
         if len(postData['first_name']) < 2:											
-            errors['first_name'] = 'First name should be atleast 2 characters long.'	
+            errors['first_name'] = 'First name should be at least 2 characters long.'	
         if not postData['first_name'].isalpha() and postData['first_name'] != '':
             errors['first_name'] = 'First name must containt only letters.'
         if len(postData['last_name']) < 2:										
-            errors['last_name'] = 'Last name should be atleast 2 characters long'
+            errors['last_name'] = 'Last name should be at least 2 characters long'
         if not postData['last_name'].isalpha() and postData['first_name'] != '':
             errors['last_name'] = 'Last name must containt only letters.'
 
@@ -42,7 +42,7 @@ class UserManager(models.Manager):
             errors['email'] = "Email is already registered."
         # PASSWORD VALIDATION
         if len(postData['password']) < 3:
-            errors['password'] = 'Password required, should be atleast 8 characters long.'
+            errors['password'] = 'Password required, should be at least 8 characters long.'
         if postData['password'] != postData['confirm_password']:
             errors['password'] = "Confirmation didn't match the password"
         return errors

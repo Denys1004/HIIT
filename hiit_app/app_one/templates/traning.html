@@ -18,14 +18,6 @@
         <div id="exercise_photo_container"></div>
     </div>
 
-
-
-    <script>
-       let restTime = parseInt("{{request.session.rest_time}}");
-       let workoutTime = parseInt("{{request.session.workout_time}}");
-       let breakTime = parseInt("{{request.session.break_time}}");
-       let training_exercises = '{{ request.session.training_array }}';
-    </script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

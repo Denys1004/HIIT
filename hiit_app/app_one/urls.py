@@ -3,9 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('exersize/<str:exer_num>/<str:exersize_name>', views.setup_training),
+    path('add_exercise/<str:exercise>', views.add_exercise),
+    path('remove_exercise/<str:exercise>', views.remove_exercise),
     path('starttraning', views.starttraning),
     path('traning', views.traning),
-    path('reset', views.reset)
+    path('reset', views.reset),
+    path('passSession', views.passSession)
     
 ]
