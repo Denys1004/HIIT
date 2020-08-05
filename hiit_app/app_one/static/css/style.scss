@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page_container{
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+h1{
+    margin: 10px;
+    text-align: center;
+}
+.exersize_container{
+    text-align: center;
+}
+
+
+
+.image_container{
+    display: inline-block;
+    text-align: center;
+    img{
+        width: 196px;
+        height: auto;
+    }
+}
+
+.image_container a:hover{
+    border: 2px solid black;
+    background-color: rgb(232, 232, 232);
+
+}
+
+
+
+
+h3{
+    margin-top: 10px;
+}
+.description_container{
+    padding: 20px;
+    max-width: 560px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(233, 233, 233);
+}
+.description_container p{
+    margin-top: 6px;
+}
+
+.choosed_exercise{
+    color: rgb(165, 6, 3);
+    font-weight: bold;
+}
+
+
+#training_array{
+    display: none;
+}

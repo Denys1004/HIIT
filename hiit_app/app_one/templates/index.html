@@ -13,42 +13,33 @@
     <div class="page_container">
         <h1>Choose 6 exersizes</h1>
         <div class="exersize_container">
-       
-        <div id='slide_1' class="image_container" onclick="add_exercise('slide_1', 'pushup')">
-            <img src="../static/images/slide_1.gif" alt="pushup">
-            <p>pushup</p>
-        </div>
-     
-
-        <div id='slide_2' class="image_container"  onclick="add_exercise('slide_2', 'standup')">
-            <img src="../static/images/slide_2.gif" alt="standup">
-            <p>standup</p>
-        </div>
-
-
+            <div id='slide_1' class="image_container" onclick="add_exercise('slide_1', 'pushup')">
+                <img src="../static/images/slide_1.gif" alt="pushup">
+                <p>pushup</p>
+            </div>
+            <div id='slide_2' class="image_container"  onclick="add_exercise('slide_2', 'standup')">
+                <img src="../static/images/slide_2.gif" alt="standup">
+                <p>standup</p>
+            </div>
             <div id='slide_3' class="image_container"  onclick="add_exercise('slide_3', 'sitdown')">
                 <img src="../static/images/slide_3.gif" alt="sitdown">
                 <p>sitdown</p>
             </div>
-
-
             <div id='slide_4' class="image_container" onclick="add_exercise('slide_4', 'pullup')">
                 <img src="../static/images/slide_4.gif" alt="pullup">
                 <p>pullup</p>
             </div>
-
-        
             <div id='slide_5' class="image_container" onclick="add_exercise('slide_5', 'berpy')">
                 <img src="../static/images/slide_5.gif" alt="berpy">
                 <p>berpy</p>
             </div>
-
-        
             <div id='slide_6' class="image_container" onclick="add_exercise('slide_6', 'jumps')">
                 <img src="../static/images/slide_6.gif" alt="jumps">
                 <p>jumps</p>
             </div>
-          
+        </div>
+        
+        <div class="form_container">
             <form action="/starttraning" method="POST">
                 {% csrf_token %}
                 <br>
@@ -59,12 +50,13 @@
             </form>
             <br>
             <a href="/reset"><button>Reset</button></a>
-
         </div>
+
+
+        
 
         <div class="description_container">
             <div id="training_array">{{ request.session.training_array }}</div>
-            <!-- <br> -->
             <p>Rest Time:<span id = 'rest_time_num'>{{ request.session.rest_time }}</span></p>
             <p>Workout Time:<span id = 'workout_time_num'>{{ request.session.workout_time }}</span></p>
             <p>Break Time:<span id = 'break_time_num'>{{ request.session.break_time }}</span></p>

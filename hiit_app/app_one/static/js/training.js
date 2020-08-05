@@ -5,11 +5,10 @@ function add_exercise(img_name, ex_name){
       type: 'GET',
       url: `/exersize/${img_name}/${ex_name}`,
       success: function(response){
-        console.log(response);
-        
         for(i = 1; i<response.length+1; i++ ){
           $(`#ex${i}`).html(` ${response[i-1]}`)
-        }
       }
-    })
-  }
+    }
+  })
+}
+

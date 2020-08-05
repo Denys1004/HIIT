@@ -7,11 +7,8 @@ function delete_quotes(ex_string){
   return newstr
 }
 training_exercises = delete_quotes(training_exercises)
-// Adding finish image to the training
-// training_exercises.push('finish')
-console.log(training_exercises);
 
-// 3. Countdown
+// Countdown
 function countDown(count_time, status, exersise){
   return new Promise((resolve) =>{
     let timerNumber = setInterval(() => {
@@ -26,7 +23,6 @@ function countDown(count_time, status, exersise){
         document.getElementById("workout_status").style.color = "green";
       }
       document.getElementById('exercise_photo_container').innerHTML = `<img id='exersise' src='static/images/${exersise}.gif'>`
-
       if (count_time <= 0){
         clearInterval(timerNumber);
         resolve();
@@ -34,8 +30,7 @@ function countDown(count_time, status, exersise){
     }, 1000);
   })
 } 
-
-
+// Training
 async function training(){
   await countDown(restTime, 'PREPARE', training_exercises[0])
   for(let i=0; i<18; i++){
@@ -50,75 +45,6 @@ async function training(){
   await countDown(restTime, "DONE", 'finish')
 }
 
-
 window.onload = () =>{
   training();
 }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// WHOLE TRAINING
-// async function training(){
-//   await countDown(restTime, "PREPARE", ex1)
-
-//   await countDown(workoutTime, "WORKOUT", ex1)
-//   await countDown(restTime, "REST", ex2)
-//   await countDown(workoutTime, "WORKOUT", ex2)
-//   await countDown(restTime, "REST", ex3)
-//   await countDown(workoutTime, "WORKOUT", ex3)
-//   await countDown(restTime, "REST", ex4)
-//   await countDown(workoutTime, "WORKOUT", ex4)
-//   await countDown(workoutTime, "WORKOUT", ex5)
-//   await countDown(restTime, "REST", ex6)
-//   await countDown(workoutTime, "WORKOUT", ex6)
-  
-//   await countDown(breakTime, "BREAK", ex1)
-
-//   await countDown(workoutTime, "WORKOUT", ex1)
-//   await countDown(restTime, "REST", ex2)
-//   await countDown(workoutTime, "WORKOUT", ex2)
-//   await countDown(restTime, "REST", ex3)
-//   await countDown(workoutTime, "WORKOUT", ex3)
-//   await countDown(restTime, "REST", ex4)
-//   await countDown(workoutTime, "WORKOUT", ex4)
-//   await countDown(restTime, "REST", ex5)
-//   await countDown(workoutTime, "WORKOUT", ex5)
-//   await countDown(restTime, "REST", ex6)
-//   await countDown(workoutTime, "WORKOUT", ex6)
-
-//   await countDown(breakTime, "BREAK", ex1)
-
-//   await countDown(workoutTime, "WORKOUT", ex1)
-//   await countDown(restTime, "REST", ex2)
-//   await countDown(workoutTime, "WORKOUT", ex2)
-//   await countDown(restTime, "REST", ex3)
-//   await countDown(workoutTime, "WORKOUT", ex3)
-//   await countDown(restTime, "REST", ex4)
-//   await countDown(workoutTime, "WORKOUT", ex4)
-//   await countDown(restTime, "REST", ex5)
-//   await countDown(workoutTime, "WORKOUT", ex5)
-//   await countDown(restTime, "REST", ex6)
-//   await countDown(workoutTime, "WORKOUT", ex6)
-
-//   await countDown(restTime, "DONE", finish)
-// }

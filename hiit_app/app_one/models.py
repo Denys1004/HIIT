@@ -65,7 +65,6 @@ class Training(models.Model):
     description = models.TextField()
     location = models.CharField(max_length = 255)
     poster = models.ForeignKey(User, related_name = 'poster', on_delete=models.CASCADE)
-    executor = models.ForeignKey(User, related_name = 'executor', on_delete=models.CASCADE, blank = True, null = True)
     created_at = models.DateTimeField(auto_now_add = True)  								
     updated_at = models.DateTimeField(auto_now = True)
     # exercises
