@@ -45,19 +45,19 @@
             <p>Break Time between cycles,  in seconds: <input type="number" id = "breakTime" name="break_time" value="60"></p>
             <button>Start training</button>
         </form>
-        <br>
         <a href="/reset"><button>Reset</button></a>
+        
         <div class="description_container">
-            <div id="training_array">{{ request.session.training_array }}</div>
             <p>Rest Time:<span id = 'rest_time_num'>{{ request.session.rest_time }}</span></p>
             <p>Workout Time:<span id = 'workout_time_num'>{{ request.session.workout_time }}</span></p>
             <p>Break Time:<span id = 'break_time_num'>{{ request.session.break_time }}</span></p>
-            <p >Exercise 1: <span id='ex1' class="choosed_exercise">{{ request.session.exersize_name.0 }}</span></p>
-            <p >Exercise 2: <span id='ex2' class="choosed_exercise">{{ request.session.exersize_name.1 }}</span></p>
-            <p >Exercise 3: <span id='ex3' class="choosed_exercise">{{ request.session.exersize_name.2 }}</span></p>
-            <p >Exercise 4: <span id='ex4' class="choosed_exercise">{{ request.session.exersize_name.3 }}</span></p>
-            <p >Exercise 5: <span id='ex5' class="choosed_exercise">{{ request.session.exersize_name.4 }}</span></p>
-            <p >Exercise 6: <span id='ex6' class="choosed_exercise">{{ request.session.exersize_name.5 }}</span></p>
+
+            <p >Exercise 1: <span id='ex0' class="choosed_exercise">{{ request.session.exersize_name.0 }}</span></p>
+            <p >Exercise 2: <span id='ex1' class="choosed_exercise">{{ request.session.exersize_name.1 }}</span></p>
+            <p >Exercise 3: <span id='ex2' class="choosed_exercise">{{ request.session.exersize_name.2 }}</span></p>
+            <p >Exercise 4: <span id='ex3' class="choosed_exercise">{{ request.session.exersize_name.3 }}</span></p>
+            <p >Exercise 5: <span id='ex4' class="choosed_exercise">{{ request.session.exersize_name.4 }}</span></p>
+            <p >Exercise 6: <span id='ex5' class="choosed_exercise">{{ request.session.exersize_name.5 }}</span></p>
         </div>
     </div>
 </body>

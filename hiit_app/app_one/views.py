@@ -6,6 +6,10 @@ import json, random
 def index(request):
     if 'training_array' not in request.session:
         request.session['training_array'] = []
+        request.session['rest_time'] = 15
+        request.session['workout_time'] = 30
+        request.session['break_time'] = 60
+
 
     return render(request, 'index.html')
 

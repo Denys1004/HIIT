@@ -1,92 +1,55 @@
 // AJAX
-// window.onload = () =>{
-//     for(let i=0; i<request.session['training_array'].length; i++)
-//     {
-//         $(``)
-//     }
-//   }
+window.onload = () =>{
+    $.ajax({
+        type: 'GET',
+        url: '/passSession',
+        success: (response) =>{
+            response.training_exercises.map((exercise,i) => {
+                $(`#${exercise}`).attr('class','choosen')
+                $(`#ex${i}`).html(` ${exercise}`)
+            })
 
+        }
+        })
+  }
 $('#exersize_container div').click(function(){
     let exercise = $(this).attr('id');
     // let choosen_ex_class = $(this).attr('class');
     
     if($(this).hasClass('choosen'))
     {
-        $(this).removeClass('choosen');
-        $(this).addClass('not_choosen');
+        $(this).attr('class','not_choosen');
         $.ajax({
         type: 'GET',
         url: `/remove_exercise/${exercise}`,
         success: function(response){
             console.log(response);
             clearSpans()
-            for(i = 1; i<response.length+1; i++ ){
-            $(`#ex${i}`).html(` ${response[i-1]}`)
+            for(i = 0; i<response.length; i++ ){
+            $(`#ex${i}`).html(` ${response[i]}`)
             }
         }
         })
     }
     else
     {
-        $(this).removeClass('not_choosen');
-        $(this).addClass('choosen');
+        $(this).attr('class','choosen');
         $.ajax({
             type: 'GET',
             url: `/add_exercise/${exercise}`,
             success: function(response){
             console.log(response);
             clearSpans();
-            for(i = 1; i<response.length+1; i++ ){
-                $(`#ex${i}`).html(` ${response[i-1]}`)
+            for(i = 0; i<response.length; i++ ){
+                $(`#ex${i}`).html(` ${response[i]}`)
             }
             }
         })
     }
   })
-
-
-  /*
-  	
-$('#exersize_container div').click(function(){
-  let exercise_name = $(this).children('img').attr('alt');
-  let img_id = $(this).attr('id');
-  let choosen_ex_class = $(this).attr('class');
-
-  if($(this).hasClass('choosen')){
-    $(this).removeClass('choosen');
-    $(this).addClass('not_choosen');
-  }else if($(this).hasClass('not_choosen')){
-    $(this).removeClass('not_choosen');
-    $(this).addClass('choosen');
-  }
-
-  console.log(exercise_name);
-  console.log(img_id);
-  console.log(choosen_ex_class);
-  console.log('*');
-  $.ajax({
-    type: 'GET',
-    url:  /exersize/${img_id}/${exercise_name},
-    success: function(response){
-      for(i = 1; i<response.length+1; i++ ){
-        $(#ex${i}).html(${response[i-1]})
-      }
-    }
-  })
-  $.ajax({
-    type: 'GET',
-    url:  /exersize/${img_id}/${exercise_name}/${choosen_ex_class},
-    success: function(response){
-      for(i = 1; i<response.length+1; i++ ){
-        $(#ex${i}).html(${response[i-1]})
-      }
-    }
-  })
-})
-  */
   function clearSpans()
   {
-      for(var i=1; i<=6; i++)
+      for(var i=0; i<6; i++)
       {
         $(`#ex${i}`).html('')
       }
