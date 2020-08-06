@@ -33,11 +33,9 @@ def starttraning(request):
         if(tempList[i] not in request.session['training_array']):
             request.session['training_array'].append(tempList[i])
         i+=1
-
     return redirect('/traning')
 
 def traning(request):
-   
     return render(request, 'traning.html')
 
 def passSession(request):
@@ -49,55 +47,6 @@ def passSession(request):
     }
     return HttpResponse(json.dumps(context), content_type='application/json')
 
-
 def reset(request):
     request.session.clear()
     return redirect('/')
-
-
-
-
-
-
-
-
-
-
-# def index(request):
-#     if 'training_ready' not in request.session:
-#         request.session['training_ready'] = {
-#             'exersize_order_array': [],
-#             'exersize_names_array':[],
-#             'rest_time': 15,
-#             'workout_time': 30,
-#             'break_time': 60
-#         }
-
-#     return render(request, 'index.html')
-
-# def exersize(request, exersize_order_num, exersize_name):
-#     request.session['training_ready']['exersize_order_array'] = exersize_order_num
-#     request.session['training_ready']['exersize_names_array'] = exersize_name
-#     if len(request.session['training_ready']['exersize_order_array']) < 6 and len(request.session['training_ready']['exersize_names_array']) < 6:
-#         request.session['training_ready']['exersize_order_array'].append(exersize_order_num)
-#         request.session['training_ready']['exersize_names_array'].append(exersize_name)
-#     else:
-#         pass
-#     return redirect('/')
-
-# def starttraning(request):
-#     request.session['rest_time'] = request.POST['rest_time']
-#     request.session['workout_time'] = request.POST['workout_time']
-#     request.session['break_time'] = request.POST['break_time']
-#     return redirect('/traning')
-
-# def traning(request):
-#     return render(request, 'traning.html')
-
-
-
-
-
-
-
-
